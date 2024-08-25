@@ -1,5 +1,6 @@
 const serverless = require('serverless-http');
 const express = require('express');
+const { validateLead } = require('./db/validators');
 const { dbClient } = require('./db/clients');
 const { newLead, listLead, getLead } = require('./db/crud');
 
@@ -37,11 +38,21 @@ app.get('/leads/:id', async (req, res, next) => {
 });
 
 app.post('/leads', async (req, res, next) => {
-  const { email } = await req.body;
-  console.log(req.body);
-  const result = await newLead({ email });
+  const rawBody = await req.body;
+  const { data, hasError, message } = await validateLead(rawBody);
+  if (hasError) {
+    return res.status(400).json({
+      message: message ? message : 'Invalidate request. Please try agin',
+    });
+  }
+  if (hasError === undefined) {
+    return res.status(500).json({
+      message: 'Server Error',
+    });
+  }
+  const result = await newLead(data);
 
-  return res.status(200).json({
+  return res.status(201).json({
     results: result,
   });
 });

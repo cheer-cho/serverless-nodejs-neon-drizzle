@@ -12,7 +12,7 @@ POST http://localhost:3000/leads
 Content-Type: application/json
 
 {
-  "email": "2@1.com"
+  "email": "4@.com"
 }
 
 # ### update one leads
