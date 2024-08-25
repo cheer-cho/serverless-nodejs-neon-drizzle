@@ -1,0 +1,22 @@
+### root API
+GET http://localhost:3000
+
+### fetch all leads
+GET http://localhost:3000/leads
+
+### fetch 1 leads
+GET http://localhost:3000/leads/1
+
+### create leads
+POST http://localhost:3000/leads
+Content-Type: application/json
+
+{
+  "email": "2@1.com"
+}
+
+# ### update one leads
+# PATCH http://localhost:3000/leads/1
+
+# ### DELETE one leads
+# DELETE http://localhost:3000/leads/1
