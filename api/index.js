@@ -1,3 +1,3 @@
-import { app } from '../src/handler';
+import { app } from '../src';
 
 export default app;
