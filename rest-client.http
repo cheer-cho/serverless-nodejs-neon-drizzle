@@ -20,3 +20,6 @@ Content-Type: application/json
 
 # ### DELETE one leads
 # DELETE http://localhost:3000/leads/1
+
+### get all leads prod
+GET https://vz8tn8rfja.execute-api.us-east-2.amazonaws.com/leads
