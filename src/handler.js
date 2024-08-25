@@ -7,6 +7,8 @@ const { newLead, listLead, getLead } = require('./db/crud');
 const app = express();
 app.use(express.json());
 
+const STAGE = process.env.STAGE || 'prod';
+
 app.get('/', async (req, res, next) => {
   console.log(process.env.DEBUG);
   const sql = await dbClient();
@@ -17,6 +19,7 @@ app.get('/', async (req, res, next) => {
     message: 'Hello from root!',
     result: result.now,
     delta,
+    stage: STAGE,
   });
 });
 
