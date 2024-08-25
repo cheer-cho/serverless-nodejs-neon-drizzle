@@ -28,7 +28,7 @@ provider:
 
 functions:
   api:
-    handler: src/handler.handler
+    handler: src/index.handler
     events:
       - httpApi: "*"
 
