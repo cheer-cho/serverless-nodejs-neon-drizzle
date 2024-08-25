@@ -38,11 +38,11 @@ jobs:
         npx tsx src/cli/putSecrets.js dev $DB_URL
     - name: Deploy dev stage
       run: |
-        npm run deploy-dev-stage
+        npm run deploy:dev
     - name: Dev Stage Pull Request
       run: |
         export PR_BRANCH=$(git branch --show-current)
         export DEFAULT_BRANCH=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
         echo "$PR_BRANCH and $DEFAULT_BRANCH"
-        export DEV_STAGE_INFO=$(npm run info-dev-stage)
+        export DEV_STAGE_INFO=$(npm run info:dev)
         gh pr create --title "Automated PR from Dev Stage" --body "$DEV_STAGE_INFO" --base $DEFAULT_BRANCH --head $PR_BRANCH --repo $GITHUB_REPOSITORY
