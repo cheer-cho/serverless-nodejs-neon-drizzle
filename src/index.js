@@ -81,7 +81,8 @@ app.use((req, res, next) => {
   });
 });
 
-exports.handler = serverless(app);
+module.exports.app = app;
+module.exports.handler = serverless(app);
 
 // server-full app
 // app.listen(3400, () => {
